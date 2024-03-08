@@ -9,15 +9,10 @@ def index(request):
 
 
 def signUp(request):
-    page1=loader.get_template('signUp.html')
-    context={}
-    return HttpResponse(page1.render())
+    user=models.User(Email="s.khademi@gmail.com",Password="sa123456")
+    user.save()
+    return render(request=request, template_name='signUp.html',context={})
 
-
-
-    """
-    user1=models.user(name="samane", email="s.khademi1992@gmail.com", password="123456")
-    user1.save()
-    context={"user":user1}
-    return HttpResponse(page1.render(context))
-"""
+def datatabel(request):
+    alldata=models.User.objects.all()
+    return render(request=request, template_name='datatabel.html', context={"alldata":alldata})
