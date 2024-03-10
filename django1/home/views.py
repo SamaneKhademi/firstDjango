@@ -11,11 +11,11 @@ def index(request):
 
 def signUp(request):
     form1 = form.Userform()
-    return render(request=request, template_name='formsignUp.html',context={'form': form1})
+    return render(request=request, template_name='formsignUp.html', context={'form': form1})
 
 
 def datatabel(request):
-    alldata=models.User.objects.all()
+    alldata = models.User.objects.all()
     return render(request=request, template_name='datatabel.html', context={"alldata": alldata})
 
 
