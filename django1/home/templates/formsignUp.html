@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% include 'bootLink.html' %}
 </head>
 <body>
-    <form method="post" action="/home/saveData/" style="text-align: center; justify-content: center; margin: auto">
+    <form method="post" action="/home/saveData/">
         {% csrf_token %}
         {{form}}
         <button type="submit">Register</button>
