@@ -7,7 +7,7 @@ class Userform(forms.ModelForm):
         super(Userform, self).__init__(*args, **kwargs)
         for item in Userform.visible_fields(self):
             if item.label == 'Password':
-                item.field.widget = forms.PasswordInput()
+                item.field.widget.attrs['id'] = 'password'
             item.field.widget.attrs['class'] = 'form-control'
 
     """
@@ -18,4 +18,4 @@ class Userform(forms.ModelForm):
             
     class Meta:
         model = models.User
-        fields = "__all__"
+        fields = ('Email', 'Password')
