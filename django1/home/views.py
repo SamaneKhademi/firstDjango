@@ -27,3 +27,9 @@ def saveData(request):
             data.save()
             alldata = models.User.objects.all()
             return render(request=request, template_name='datatabel.html', context={"alldata": alldata})
+
+
+def editData(request,id):
+    data1 = models.User.objects.filter(id=id).first()
+    form2 = form.Userform(enableFiled=False, initial={'Email': data1.Email, 'Password':data1.Password})
+    return render(request=request, template_name='editData.html', context={"form": form2})

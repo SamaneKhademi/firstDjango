@@ -6,4 +6,5 @@ urlpatterns = [
     path('signUp/', views.signUp, name='ثبت نام'),
     path('datatabel/', views.datatabel, name='دیتاهای ثبت شده'),
     path('saveData/', views.saveData, name='دیتاهای ثبت شده'),
+    path('editData/<int:id>', views.editData, name='ویرایش دیتاهای ثبت شده'),
 ]
