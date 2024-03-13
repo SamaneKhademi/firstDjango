@@ -6,10 +6,10 @@
     {% include 'bootLink.html' %}
 </head>
 <body>
-    <form method="post" action="/home/editData/">
+    <form method="post" action="/home/editSave/{{ id }}">
         {% csrf_token %}
         {{form}}
-        <button type="submit">Register</button>
+        <button type="submit">Edit</button>
         <a href="/home/datatabel">دیتا های ثبت شده</a>
     </form>
 </body>

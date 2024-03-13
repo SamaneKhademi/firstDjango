@@ -19,6 +19,7 @@
         <th>Email</th>
         <th>Password</th>
         <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -26,7 +27,8 @@
       <tr>
         <td>{{item.Email}}</td>
         <td>{{item.Password}}</td>
-        <td><a href="/home/edit/{{ item.id }}">Edit</a></td>
+        <td><a href="/home/editData/{{ item.id }}">Edit</a></td>
+        <td><a href="/home/deleteData/{{ item.id }}">Delete</a></td>
       </tr>
     {% endfor %}
     </tbody>

@@ -4,6 +4,7 @@ from django.template import loader
 from . import models
 from . import form
 import socket
+from django.shortcuts import redirect
 
 def index(request):
     return render(request=request, template_name='index.html', context={})
@@ -31,10 +32,10 @@ def saveData(request):
             return render(request=request, template_name='datatabel.html', context={"alldata": alldata})
 
 
-def edit(request, id):
+def editData(request, id):
     data1 = models.User.objects.filter(id=id).first()
     form2 = form.Userform(initial={'Email': data1.Email, 'Password':data1.Password})
-    return render(request=request, template_name='edit.html', context={'form': form2, 'id': id})
+    return render(request=request, template_name='editData.html', context={'form': form2, 'id': id})
 
 
 def editSave(request, id):
@@ -48,8 +49,7 @@ def editSave(request, id):
         return render(request=request, template_name='datatabel.html', context={"alldata": alldata})
 
 
-
-
-
-
-
+def deleteData(request, id):
+    data1 = models.User.objects.filter(id=id).first()
+    data1.delete()
+    return redirect('/home/datatabel/')
