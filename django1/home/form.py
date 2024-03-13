@@ -3,14 +3,11 @@ from . import models
 
 
 class Userform(forms.ModelForm):
-    def __init__(self, enableFiled=True, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(Userform, self).__init__(*args, **kwargs)
         for item in Userform.visible_fields(self):
             if item.label == 'Password':
-                if enableFiled ==True:
-                    item.field.widget = forms.PasswordInput()
-                else:
-                    item.field.widget = forms.textInput()
+                item.field.widget.attrs['id'] = 'password'
             item.field.widget.attrs['class'] = 'form-control'
 
     """
@@ -18,7 +15,7 @@ class Userform(forms.ModelForm):
         Email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
         Password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     """
-            
+
     class Meta:
         model = models.User
-        fields = "__all__"
+        fields = ('Email', 'Password')
